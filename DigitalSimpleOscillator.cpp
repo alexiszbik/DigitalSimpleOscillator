@@ -9,6 +9,10 @@ using namespace daisysp;
 Switch toggle;
 ydaisy::SmoothValue glider;
 
+const double cv1Offset =  -0.00555;
+const double cv2Offset = -0.00955;
+const double cv4Offset = 0.0225;
+
 struct Osc {
     static const int subOscCount = 2;      
 
@@ -121,7 +125,7 @@ void AudioCallback(AudioHandle::InputBuffer  in,
         pitch = pitch > 0.05 ? pitch : 0;
         pitch = fmap(pitch, 0, 24.f);
 
-        float v1 = (patch.GetAdcValue(CV_1) - 0.00555) * 60;
+        float v1 = (patch.GetAdcValue(CV_1) + cv1Offset) * 60;
         
         int roundPitch = roundf(v1);
         if (roundPitch != previousRoundPitch) {
@@ -135,9 +139,9 @@ void AudioCallback(AudioHandle::InputBuffer  in,
 
         glider.dezipperCheck(44100 * glideTime * glideTime);
 
-        float v2 = (patch.GetAdcValue(CV_2) - 0.00955) * 60;
+        float v2 = (patch.GetAdcValue(CV_2) + cv2Offset) * 60;
 
-        float v4 = (patch.GetAdcValue(CV_4) + 0.0225);
+        float v4 = (patch.GetAdcValue(CV_4) + cv4Offset);
 
         v2 = fabs(v2) > 0.1 ? v2 : 0;
 
@@ -180,13 +184,11 @@ int main(void)
     while(1) {
         auto newTime = System::GetNow();
         if (ledStatus) {
-            //dsy_gpio_write(led, true);
             led.Write(true);
             ledStatus = false;
             timer = newTime;
         } 
         if ((newTime - timer) > 20) {
-            //dsy_gpio_write(led, false);
             led.Write(false);
         } 
     }
