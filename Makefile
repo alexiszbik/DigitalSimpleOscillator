@@ -3,8 +3,7 @@ TARGET = DigitalSimpleOscillator
 
 # Sources
 CPP_SOURCES = DigitalSimpleOscillator.cpp \
-DaisyYMNK/Display/DisplayManager.cpp \
-DaisyYMNK/Mux/Mux16.cpp
+SmoothValue.cpp 
 
 # Library Locations
 LIBDAISY_DIR = libDaisy
