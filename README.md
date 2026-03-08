@@ -72,9 +72,9 @@ In the firmware, calibration is done by adjusting these constants:
 const double cv1Offset = -0.00555;
 const double cv2Offset = -0.00955;
 const double cv4Offset = 0.0225;
+```
 
-
-##1 Procedure
+### Procedure
 
 Send a stable reference voltage (for example 0V) to the CV input.
 
@@ -85,3 +85,5 @@ Adjust the corresponding offset value in the code.
 Recompile and flash the firmware.
 
 Repeat until the response is stable and accurate.
+
+I know this is painful, and maybe I should think about an auto calibration system in the future.
