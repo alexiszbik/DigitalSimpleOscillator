@@ -17,7 +17,7 @@ This module provides two oscillators with pitch modulation, hard sync, and glide
 | **CV_2** | Pitch modulation CV |
 | **CV_4** | Hard sync modulation CV |
 | **CV_5** | Pitch drift (0 → +24 semitones) |
-| **CV_6** | Hard Sync trigger |
+| **CV_6** | Hard Sync knob |
 | **CV_7** | Chord mode (~0 for sweet detune, +3, +4, +5)
 ---
 
