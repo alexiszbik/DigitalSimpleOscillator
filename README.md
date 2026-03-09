@@ -4,6 +4,7 @@
 
 Digital oscillator module for DIY synthesizers built with the **Daisy Patch Submodule**.
 This module provides two oscillators with pitch modulation, hard sync, and glide.
+Each of the two oscillator are routed to a different output.
 
 ---
 
